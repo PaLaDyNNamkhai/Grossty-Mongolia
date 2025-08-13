@@ -4,10 +4,30 @@
 
 html, body { scroll-behavior: smooth; }
 
+/* Global base tweaks for a premium feel */
+:root {
+  --ring: 0 0% 0%;
+}
+
+body {
+  @apply text-neutral-900 bg-[radial-gradient(ellipse_at_top,_rgba(255,237,213,.45),_transparent_60%),linear-gradient(to_bottom,_#fff,_#fff8ee)];
+}
+
 /* Reusable utilities */
 .container-xl { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
-.section { @apply py-14 md:py-16; }
+.section { @apply py-16 md:py-20; }
 .card { @apply rounded-3xl border border-brand-100 bg-white shadow-soft; }
 .btn { @apply inline-flex items-center justify-center rounded-2xl px-4 py-2 font-medium transition; }
-.btn-primary { @apply bg-brand-500 text-white hover:bg-brand-600; }
-.btn-outline { @apply border border-brand-200 hover:bg-brand-50; }
+.btn-primary { @apply bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-800; }
+.btn-outline { @apply border border-brand-300 text-neutral-900 hover:bg-brand-50; }
+.btn-ghost { @apply hover:bg-black/5; }
+
+/* Focus ring */
+.btn, a, input, textarea { @apply focus:outline-none focus:ring-2 focus:ring-brand-300 focus:ring-offset-2 focus:ring-offset-white; }
+
+/* Headings */
+.h-title { @apply tracking-tight; }
+.h-subtle { @apply text-neutral-600; }
+
+/* Inputs */
+.input { @apply w-full rounded-2xl border border-brand-200 px-3 py-2 placeholder:text-neutral-400 focus:border-brand-400; }
