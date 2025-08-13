@@ -1,48 +1,43 @@
-import { Button, Container } from "./UI";
-import { useEffect, useState } from "react";
-
+// Navbar.jsx
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const links = [
-    { href: "#products", label: "Products" },
-    { href: "#benefits", label: "Benefits" },
-    { href: "#ingredients", label: "Ingredients" },
-    { href: "#howto", label: "How to Use" },
-    { href: "#faq", label: "FAQ" },
-    { href: "#contact", label: "Contact" },
-  ];
-
   return (
-    <header className={`fixed top-0 inset-x-0 z-50 transition-all ${
-      scrolled ? "bg-white/90 backdrop-blur border-b border-brand-100 shadow" : "bg-transparent"
-    }`}>
-      <Container>
-        <div className="flex items-center justify-between h-16">
-          <a href="#" className="flex items-center gap-3">
-            <img src="/logo.png" alt="Grossty" className="w-9 h-9 rounded-2xl object-cover" />
-            <div>
-              <p className="font-bold text-lg leading-tight">Grossty Mongolia</p>
-              <p className="text-xs text-neutral-500 -mt-1">Pure Batana Oil</p>
-            </div>
-          </a>
-          <nav className="hidden md:flex items-center gap-8 text-sm">
-            {links.map((l) => (
-              <a key={l.href} href={l.href} className="relative group">
-                <span className="transition-colors group-hover:text-brand-700">{l.label}</span>
-                <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-brand-500 transition-all group-hover:w-full" />
-              </a>
-            ))}
-          </nav>
-          <Button className="hidden sm:inline-flex shadow hover:shadow-md">Shop</Button>
+    <nav className="bg-white shadow-md">
+      <div className="container mx-auto flex items-center justify-between py-4 px-6">
+        <h1 className="text-2xl font-bold tracking-wide">Grossty</h1>
+        <ul className="flex gap-6 text-gray-700 font-medium">
+          <li className="hover:text-amber-600 transition">Products</li>
+          <li className="hover:text-amber-600 transition">Benefits</li>
+          <li className="hover:text-amber-600 transition">Ingredients</li>
+          <li className="hover:text-amber-600 transition">How to Use</li>
+          <li className="hover:text-amber-600 transition">FAQ</li>
+          <li className="hover:text-amber-600 transition">Contact</li>
+        </ul>
+      </div>
+    </nav>
+  );
+}
+
+// Hero.jsx
+export default function Hero() {
+  return (
+    <section className="bg-gradient-to-b from-amber-50 to-white py-20">
+      <div className="container mx-auto text-center max-w-2xl">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+          Nourish. Restore. GLOW.
+        </h2>
+        <p className="text-lg text-gray-600 mb-6">
+          Meet batana-powered care crafted for Mongolia’s climate—dry winters, windy springs,
+          and sun-heavy summers. Stronger roots, smoother lengths, real shine.
+        </p>
+        <div className="flex justify-center gap-4">
+          <button className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full shadow-lg transition">
+            Shop
+          </button>
+          <button className="border border-amber-600 text-amber-600 hover:bg-amber-50 px-6 py-3 rounded-full transition">
+            Learn More
+          </button>
         </div>
-      </Container>
-    </header>
+      </div>
+    </section>
   );
 }
