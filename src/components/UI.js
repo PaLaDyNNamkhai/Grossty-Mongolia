@@ -3,10 +3,13 @@ export function Container({ children, className = "" }) {
 }
 
 export function Button({ children, variant = "primary", className = "", ...props }) {
-  const base = "btn ";
-  const styles = variant === "primary" ? "btn-primary" : "btn-outline";
+  const styles = {
+    primary: "btn btn-primary",
+    outline: "btn btn-outline",
+    ghost: "btn btn-ghost",
+  }[variant] || "btn btn-primary";
   return (
-    <button className={`${base} ${styles} ${className}`} {...props}>
+    <button className={`${styles} ${className}`} {...props}>
       {children}
     </button>
   );
@@ -20,11 +23,19 @@ export function CardBody({ children, className = "" }) {
   return <div className={`p-6 ${className}`}>{children}</div>;
 }
 
-export function SectionTitle({ title, subtitle }) {
+export function SectionTitle({ title, subtitle, align = "center" }) {
   return (
-    <div className="mb-8">
-      <h2 className="text-3xl font-bold">{title}</h2>
-      {subtitle && <p className="text-neutral-600 mt-1">{subtitle}</p>}
+    <div className={`mb-10 ${align === "center" ? "text-center" : "text-left"}`}>
+      <h2 className="h-title text-3xl md:text-4xl font-extrabold">{title}</h2>
+      {subtitle && <p className="h-subtle mt-2 max-w-2xl mx-auto">{subtitle}</p>}
     </div>
+  );
+}
+
+export function Badge({ children }) {
+  return (
+    <span className="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-brand-500 text-white shadow">
+      {children}
+    </span>
   );
 }
